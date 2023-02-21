@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ECommerce.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title><%: Page.Title %></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/fontawesome/font-awesome.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.1.js"></script>
+    <script src="crystalreportviewers13/js/crviewer/crv.js"></script>
+    <%--<style>
+        body {
+            margin-top: 20px;
+        }
+    </style>--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" >
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <nav class="navbar navbar-expand-lg navbar-light bg-info">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" href="#">ECommerce</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav col-10">
+                        <a class="nav-item nav-link active text-white" href="/Default.aspx">Home</a>
+                        <a class="nav-item nav-link text-white" href="Ex_01.aspx">About</a>
+                        <a class="nav-item nav-link text-white" href="Ex_02.aspx">Contact Us</a>
+                        <a class="nav-item nav-link text-white" href="Report.aspx">Report</a>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entry</a>
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item " href="/Members/frmBrandEntry.aspx">Brand</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/frmCategoryEntry.aspx">Category</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/frmCustomerEntry.aspx">Customer</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/frmProducts.aspx">Products</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/frmOrderDetails.aspx">Order Details</a>
+                            </div>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Show</a>
+                            <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item " href="Members/ShowBrand.aspx"> Show Brand</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/ViewCategory.aspx"> View Category</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/ShowCustomer.aspx"> Show Customer</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/Members/ViewProduct.aspx"> View Products</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="Members/ShowOrderDetails.aspx"> View Order Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="navbar-nav col-2">
+                        <% 
+                            if (Request.IsAuthenticated)
+                            {
+                        %>
+                        <a class="nav-item nav-link text-white" href="#">Hi <%=Page.User.Identity.Name %></a>
+                        <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link" OnClick="btnLogout_Click">Logout</asp:LinkButton>
+                        <%
+                            }
+                            else
+                            {
+                        %>
+                        <a class="nav-item nav-link text-white" href="frmRegister.aspx">Register</a>
+                        <a class="nav-item nav-link text-white" href="Login.aspx">Login</a>
+                        <%
+                            }
+                        %>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="container-fluid">
+            <p class="text-center">&copy; <%: DateTime.Now.Year %> - www.ecommerce.com</p>
+        </div>
+    </form>
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+    <script src="Scripts/bootstrap.js"></script>
+</body>
+</html>

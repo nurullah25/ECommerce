@@ -1,0 +1,51 @@
+CREATE DATABASE AspProject
+GO
+
+USE AspProject
+GO
+
+CREATE TABLE brand
+(
+	brandId INT IDENTITY PRIMARY KEY,
+	brandName NVARCHAR(50) NOT NULL
+)
+GO
+
+CREATE TABLE category
+(
+	catId INT IDENTITY PRIMARY KEY,
+	catName NVARCHAR(50) NOT NULL
+)
+GO
+
+CREATE TABLE customer
+(
+	cusId INT IDENTITY PRIMARY KEY,
+	cusName NVARCHAR(50) NOT NULL,
+	address NVARCHAR(100) NOT NULL,
+	phone VARCHAR(50) NOT NULL,
+	email NVARCHAR(50) NULL
+)
+GO
+
+CREATE TABLE orderDetails
+(
+	ordId INT IDENTITY PRIMARY KEY,
+	orderDate DATE NOT NULL,
+	productId INT REFERENCES product(prodId) NOT NULL,
+	customerId INT REFERENCES customer(cusId) NOT NULL,
+	quantity INT NOT NULL
+)
+GO
+
+CREATE TABLE product
+(
+	prodId INT IDENTITY PRIMARY KEY,
+	prodName NVARCHAR(50) NOT NULL,
+	unitPrice MONEY NOT NULL,
+	picture NVARCHAR(200) NOT NULL,
+	catId INT REFERENCES category(catId) NOT NULL,
+	stockIn BIT NOT NULL,
+	salesDate DATE NOT NULL
+)
+GO
